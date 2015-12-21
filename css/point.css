@@ -1,0 +1,322 @@
+*{
+    padding:0; margin:0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: #080029;
+	overflow: hidden;
+
+}
+
+
+@font-face {
+	font-family: 'fontello';
+	src: url('../fonts/fontello/font/fontello.eot?95098810');
+	src: url('../fonts/fontello/font/fontello.eot?95098810#iefix') format('embedded-opentype'),
+	url('../fonts/fontello/font/fontello.woff?95098810') format('woff'),
+	url('../fonts/fontello/font/fontello.ttf?95098810') format('truetype'),
+	url('../fonts/fontello/font/fontello.svg?95098810#fontello') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?95098810#fontello') format('svg');
+  }
+}
+*/
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: "fontello";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	margin-right: .2em;
+	text-align: center;
+	/* opacity: .8; */
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+
+	/* you can be more comfortable with increased icons size */
+	/* font-size: 120%; */
+
+	/* Uncomment for 3D effect */
+	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-play:before { content: '\e800'; } /* '?' */
+.icon-stop:before { content: '\e801'; } /* '?' */
+.icon-pause:before { content: '\e802'; } /* '?' */
+.icon-backward:before { content: '\e803'; } /* '?' */
+.icon-forward:before { content: '\e804'; } /* '?' */
+.icon-clock:before { content: '\e805'; } /* '?' */
+
+.icon-volume-off:before { content: '\e806'; } /* '?' */
+
+.icon-volume-up:before { content: '\e807'; } /* '?' */
+
+.icon-spin5:before { content: '\e808'; } /* '?' */
+.icon-menu:before { content: '\e809'; } /* '?' */
+
+
+
+.pointWorkArea{
+    overflow: visible;
+	/*border-top:1px solid rgba(0, 37, 255, 0.70);*/
+    position: absolute;
+
+	background: -moz-linear-gradient(left, rgba(8, 0, 41, 0.10) 0%, rgb(101, 198, 255) 50%, rgba(255,255,255,0.01) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0.1)), color-stop(50%,rgba(69,130,168,0.06)), color-stop(100%,rgba(255,255,255,0.01))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,0.1) 0%,rgba(69,130,168,0.06) 50%,rgba(255,255,255,0.01) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgba(255,255,255,0.1) 0%,rgba(69,130,168,0.06) 50%,rgba(255,255,255,0.01) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(255,255,255,0.1) 0%,rgba(69,130,168,0.06) 50%,rgba(255,255,255,0.01) 100%); /* IE10+ */
+	background: linear-gradient(to right, rgba(8, 0, 41, 0.10) 0%, rgb(104, 202, 255) 50%,rgba(255,255,255,0.01) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1affffff', endColorstr='#03ffffff',GradientType=1 ); /* IE6-9 */
+	height: 1px;
+    background: rgba(0, 81, 255, 0.15);
+    width:100%;
+}
+
+.point{
+    width:20px;
+    height: 20px;
+	margin-top:-10px;
+    border-radius: 30px;
+    background: greenyellow;
+    position: absolute;
+    top:44%;
+    left:0;
+}
+.controlGroup{
+}
+.controlGroup2{
+    padding:0 2%;
+}
+.controls{
+    color:#fff;
+    border-top:1px solid #ccc;
+    padding:1%;
+    min-height:60px;
+    height:auto;
+    overflow:hidden;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    
+}
+
+
+.control{
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    max-height: 40px;
+    line-height: 20px;
+    font-size: 90%;
+    position: relative;
+}
+
+.control:hover{
+    background:orange;
+}
+
+span.control.noHover:hover{
+	background: none;
+	cursor: default;
+}
+
+#profiles.profile{
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 0;
+	font-size: 0;
+}
+svg.profileSqr.selectedProfile{
+    border:1px solid orange;
+    background-color: orange;
+}
+
+svg.profileSqr{
+	border:1px solid #0078ff;
+	background: #630079;
+	cursor: pointer;
+}
+
+svg.profileSqr:hover{
+	background-color: #ff2b00;
+}
+
+span.profile svg{
+	line-height: 0;
+	font-size:0;
+}
+
+svg#profile1{
+	margin:0 5px;
+  
+}
+
+
+.onOffIndicator{
+	display: inline-block;
+	/* width: 12px; */
+	/* height: 12px; */
+	/* margin-left: 10px; */
+	vertical-align: middle;
+	margin-top: -3px;
+	line-height: 12px;
+	font-size: 18px;
+	text-align: center;
+}
+span.soundOn,
+span.soundOn:before
+{
+    color: greenyellow;
+	content: '\e807';
+}
+span.soundOff,
+span.soundOff:before
+{
+	content: '\e806';
+	color: #ff0014;
+}
+
+
+.control.start:hover,
+.control.resume:hover,
+.control.restart:hover
+{
+	background: #009a21;
+	color: #001610;
+}
+
+.control.stop:hover{
+	background:#ff0014;
+	color:yellow;
+}
+
+
+.current{
+}
+.current.currentCount{
+	padding-left:1em;
+	padding-right:1em;
+}
+
+.control.counter{
+    /*width:150px;*/
+    text-align: left;
+}
+
+
+
+.speed{
+
+	text-align:left;
+
+}
+
+.speed span{
+	margin-right:8px;
+}
+
+.speedLabel{
+	display:inline-block;
+	padding-right:5%;
+}
+
+.control.currentSpeed
+{
+	font-weight: bold;
+	border:none;
+	border-radius:0;
+	vertical-align: middle;
+	padding: 0;
+}
+
+.upOrDown{
+
+cursor: pointer;
+    display:inline-block;
+
+    text-align:center;
+    font-weight:bold;
+    position:relative;
+
+    margin-top:-1px
+}
+span.currentSpeed{
+
+}
+
+.upOrDown.decreaseSpeed{
+
+    color:red;
+}
+.upOrDown.increaseSpeed{
+	color:green;
+}
+
+
+.yourPath {
+    stroke-width: 10px;
+    stroke: red;
+}
+
+
+div.consolePanel{
+	background-color: rgba( 0, 0, 0, 0.5 );
+	margin-left:-1%;
+	margin-bottom:-1%;
+	margin-right:-1%;
+	margin-top: 0.5%;
+}
+div.consolePanel span.control{
+	border:none;
+}
+
+
+@media	only screen and (-webkit-min-device-pixel-ratio: 1.3),
+	only screen and (-o-min-device-pixel-ratio: 13/10),
+	only screen and (min-resolution: 120dpi)
+	{
+		/* Your code to swap higher DPI images */
+		.control{
+			white-space: nowrap;
+			max-height: 80px;
+			line-height: 2em;
+		   font-size:2em;
+		}
+		
+		.point{
+			width:40px;
+			height: 40px;
+			margin-top:-20px;
+			border-radius: 60px;
+			left:0;
+		}
+	}

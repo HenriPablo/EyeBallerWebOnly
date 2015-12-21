@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>EyeBaller</title>
+
+	    <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+	    <link rel="stylesheet" href="css/point.css" />
+
+	    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+	    <script src="js/jquery.min.js"></script>
+	    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+
+	    <!--<script src="js/gs/TimelineMax.min.js"></script>-->
+	    <!--CDN links for the latest TweenLite, CSSPlugin, and EasePack-->
+	    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>-->
+	    <!--<script src="js/gs/plugins/CSSPlugin.min.js"></script>-->
+
+	    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>-->
+	    <!--<script src="js/gs/easing/EasePack.min.js"></script>-->
+
+
+
+	    <script src="js/gs/TweenMax.min.js"></script>
+    </head>
+
+
+    <body>
+
+        <div id="pointWorkArea" class="pointWorkArea">
+	        <div class="point" id="point"></div>
+        </div>
+        <div id="controls" class="controls">
+
+            <span id="controlGroup1" class="controlGroup controlGroup1">
+                <span class="control noHover" id="profile">
+                    <!--Profile-->
+                    <span class="profile" id="profiles">
+                        <svg class="selectedProfile profileSqr" id="profile0" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+	                        <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+	                        <g>
+		                        <rect fill="none" stroke="#000000" stroke-width="0" x="0" y="0" width="20" height="20" id="svg_1"/>
+		                        <line id="line0" fill="none" stroke="#000"
+
+		                              x1="0"
+		                              y1="10"
+
+		                              x2="20"
+		                              y2="10"
+
+				                        />
+	                        </g>
+                        </svg>
+
+                        <svg id="profile1" class="profileSqr" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+	                        <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+	                        <g>
+		                        <rect fill="none" stroke="#000000" stroke-width="0" x="0" y="0" width="20" height="20" id="svg_1"/>
+		                        <line fill="none" stroke="#00ffff"
+
+		                              x1="0"
+		                              y1="20"
+
+		                              x2="20"
+		                              y2="0"
+
+		                              id="line1"/>
+	                        </g>
+                        </svg>
+
+                        <svg id="profile2" class="profileSqr" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+	                        <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+	                        <g>
+		                        <rect fill="none" stroke="#000000" stroke-width="0" x="0" y="0" width="20" height="20" id="svg_1"/>
+		                        <line fill="none" stroke="#00ffff"
+
+		                              x1="0"
+		                              y1="0"
+
+		                              x2="20"
+		                              y2="20"
+
+		                              id="line2"/>
+	                        </g>
+                        </svg>
+
+                    </span>
+                </span>
+
+                <span class="control noHover" id="sound">
+                    <span id="onOffIndicator" class="onOffIndicator soundOff icon-volume-off"></span>
+                </span>
+            </span>
+
+
+            <span id="controlGroup2" class="controlGroup controlGroup2">
+                <span class="control start preventSleep icon-play" id="start"> </span>
+                <span class="control pause allowSleep icon-pause" id="pause"> </span>
+                <span class="control resume preventSleep icon-spin5" id="resume"> </span>
+                <!--<span class="control restart preventSleep" id="restart">Restart</span>-->
+	             <!--<span class="control stop allowSleep" id="stop">Stop</span>-->
+            </span>
+
+
+            <span id="controlGroup3" class="controlGroup controlGroup3">
+                <span class="control speed noHover" id="speed">
+                    <span class="speedLabel">Cycle Duration:</span>
+                    <span id="currentSpeed" class="currentSpeed control" contenteditable="true"></span> Sec.
+
+                    <span id="increaseSpeed" class="upOrDown increaseSpeed  icon-backward"> </span>
+	                <span id="decreaseSpeed"  class="upOrDown decreaseSpeed icon-forward"> </span>
+
+                </span>
+
+
+
+	            <div id="consolePanel" class="consolePanel">
+                    <span id="counter" class="control counter noHover"><span class="speedLabel">Cycles Remaining:</span> <span class="current currentCount" id="currentCount">0</span></span>
+                    <span id="time" class="control time noHover icon-clock"> <span class="current currenttime" id="currentTime">00:00:00</span></span>
+	            </div>
+
+            </span>
+
+        </div>
+
+
+
+
+
+
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <!-- https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin#3-usage -->
+        <script type="text/javascript" src="js/Insomnia.js"></script>
+
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <script src="js/point.js" ></script>
+
+    </body>
+</html>
