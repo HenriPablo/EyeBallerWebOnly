@@ -27,6 +27,13 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        $('#start').bind('touchstart', function(){
+            console.log('touch')
+            var x = new Audio('js/left-sputnik.ogg', function () {
+                console.log('media play callback');
+            });
+            x.play();
+        });
 	    //alert('wtf')
     },
     // deviceready Event Handler

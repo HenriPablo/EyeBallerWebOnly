@@ -94,7 +94,9 @@ var eyeBaller = {
 			.clear() /* Empties the timeline */
 			.paused(isPaused) /* Pauses the timeline based on its previous paused state */
 			.to( eyeBaller.ui.point, eyeBaller.settings.getCurrentDuration, { x: newWidth(),  ease: Power0.easeNone });
-
+		tl2.bind( 'touchstart', function () {
+			console.log('touchstart bound to tl2');
+		})
 	},
 
 	/* alternate playing beeps on odd / even count
@@ -123,6 +125,10 @@ var eyeBaller = {
 			}
 
 			if (eyeBaller.settings.soundCnt % 2 == 0) {
+				//$playBtn.bind((is_touch_device) ? 'touchstart' : 'click', playfunction);
+				$('#start').trigger('touchstart', function () {
+					eyeBaller.resources.audio.left.play();
+				})
 				eyeBaller.resources.audio.left.play();
 			} else {
 				eyeBaller.resources.audio.right.play();
@@ -416,6 +422,9 @@ var eyeBaller = {
 			eyeBaller.settings.mediaPath = "js/";
 		}
 
+		$('#onOffIndicator').bind( 'touchstart', function () {
+			console.log('touchstart bound to onOffIndicator');
+		});
 		$('#onOffIndicator').click(function () {
 			if ($(this).hasClass('soundOn')) {
 				$(this).removeClass('soundOn').addClass('soundOff');
